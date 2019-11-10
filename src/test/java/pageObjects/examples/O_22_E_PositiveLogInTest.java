@@ -5,11 +5,12 @@ import common.BaseTest;
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-
-public class PositiveLogInTest extends BaseTest {
+@DisplayName("0#22#E positive LogIn test")
+public class O_22_E_PositiveLogInTest extends BaseTest {
 
     @ParameterizedTest(name = "positive login test #{0}")
     @CsvSource({

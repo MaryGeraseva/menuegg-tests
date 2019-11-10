@@ -42,5 +42,5 @@ dependencies {
 
 test {
     useJUnitPlatform ()
-//    systemProperty 'java.util.logging.manager', 'org.apache.logging.log4j.jul.LogManager'
+    systemProperty 'java.util.logging.manager', 'org.apache.logging.log4j.jul.LogManager'
 }
