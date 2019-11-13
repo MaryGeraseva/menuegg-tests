@@ -14,7 +14,7 @@ public class InputField extends BaseElement{
     }
 
     public void type(String text) {
-        log.info(String.format("type in the input field: %s", text));
+//        log.info(String.format("type in the input field: %s", text));
         element.setValue(text);
     }
 

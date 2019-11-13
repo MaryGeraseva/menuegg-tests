@@ -25,7 +25,8 @@ public class RegisterPage extends BasePageObject {
     private InputField emailField = new InputField(By.id("registerEmail"));
     private InputField passwordField = new InputField(By.id("registerPassword"));
     private InputField confirmPasswordField = new InputField(By.id("registerConfirmPassword"));
-    private InputField promoCodeField = new InputField(byClassName("form-control promocode-input ng-pristine ng-valid ng-touched"));
+//    private InputField promoCodeField = new InputField(byClassName("form-control promocode-input ng-pristine ng-valid ng-touched"));
+    private InputField promoCodeField = new InputField(byXpath("//input[@placeholder='Input your promocode']"));
     private Checkbox acceptTermsCheckbox = new Checkbox(byName("acceptTerms"));
 
     public String selectRoleText = "Which one are you?";

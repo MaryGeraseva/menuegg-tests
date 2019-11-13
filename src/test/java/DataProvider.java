@@ -9,8 +9,10 @@ public class DataProvider {
 
     public static Stream<Arguments> signUpPositiveTest() {
         return Stream.of(
-                arguments(1, String.format("%s@gmail.com", RandomStringUtils.randomAlphabetic(3)), RandomStringUtils.randomAlphanumeric(10)),
-                arguments(2, "66346", "6", "dog")
+                arguments(1, String.format("%s@gmail.com", RandomStringUtils.randomAlphabetic(6)),
+                        RandomStringUtils.randomAlphanumeric(10), "free100"),
+                arguments(2, String.format("%s@gmail.com", RandomStringUtils.randomAlphabetic(6)),
+                        RandomStringUtils.randomAlphanumeric(10), "")
         );
     }
 }

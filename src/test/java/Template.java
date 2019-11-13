@@ -4,17 +4,21 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import reporting.ReplaceCamelCase;
 
 //@DisplayName("")
-@DisplayNameGeneration(ReplaceCamelCase.class)
-public class Template {
+//@DisplayNameGeneration(ReplaceCamelCase.class)
+//public class Template {
 
-//    @ParameterizedTest(name = " #{}")
+//    @ParameterizedTest(name = " #{0}")
+//
 //    @CsvSource({
 //            "1, ' ', ' '",
 //            "2, ' ', ' '"
 //    })
+//    @MethodSource("DataProvider#signUpPositiveTest")
+
 //    @Step("")
 //    @Description("")
 //    public void signUpPositiveTestWithRegisterButton() {
@@ -22,4 +26,4 @@ public class Template {
 //    }
 
 
-}
+//}

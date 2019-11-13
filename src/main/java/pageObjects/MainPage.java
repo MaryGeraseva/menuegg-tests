@@ -10,7 +10,7 @@ public class MainPage extends BasePageObject {
     private Button registerButton = new Button(By.id("reg"));
 
     public MainPage() {
-        super("https://menuegg-stage.web.app");
+        super("https://menuegg-stage.web.app/");
     }
 
     @Step("click register button")

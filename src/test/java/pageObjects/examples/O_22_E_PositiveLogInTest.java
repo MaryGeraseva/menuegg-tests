@@ -9,7 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-@DisplayName("0#22#E positive LogIn test")
+@DisplayName("positive LogIn test")
 public class O_22_E_PositiveLogInTest extends BaseTest {
 
     @ParameterizedTest(name = "positive login test #{0}")
