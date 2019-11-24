@@ -1,7 +1,8 @@
 package pageObjects;
 
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
+import pageObjects.common.BasePageObject;
+import pageObjects.common.Urls;
 import webElements.*;
 
 import static com.codeborne.selenide.Selectors.*;
@@ -22,10 +23,10 @@ public class RegisterPage extends BasePageObject {
     private TextField singInTabTitle = new TextField($("#link1").$(withText("Sign In")));
     private TextField singUpTabTitle = new TextField($("#link2").$(withText("Sign Up")));
     private TextField registerFormTitle = new TextField($(withText("Create the New Account")));
-    private InputField emailField = new InputField(By.id("registerEmail"));
-    private InputField passwordField = new InputField(By.id("registerPassword"));
-    private InputField confirmPasswordField = new InputField(By.id("registerConfirmPassword"));
-//    private InputField promoCodeField = new InputField(byClassName("form-control promocode-input ng-pristine ng-valid ng-touched"));
+    private TextField alertMessage = new TextField($("div.alert.alert-danger"));
+    private InputField emailField = new InputField(byId("registerEmail"));
+    private InputField passwordField = new InputField(byId("registerPassword"));
+    private InputField confirmPasswordField = new InputField(byId("registerConfirmPassword"));
     private InputField promoCodeField = new InputField(byXpath("//input[@placeholder='Input your promocode']"));
     private Checkbox acceptTermsCheckbox = new Checkbox(byName("acceptTerms"));
 
@@ -35,7 +36,7 @@ public class RegisterPage extends BasePageObject {
 
 
     public RegisterPage() {
-        super("https://menuegg-stage.web.app/auth/register");
+        super(Urls.REGISTER_PAGE.getUrl());
     }
 
     @Step("type email")
@@ -55,7 +56,7 @@ public class RegisterPage extends BasePageObject {
     @Step("confirm password")
     private RegisterPage confirmPassword(String password) {
         confirmPasswordField.type(password);
-        log.info(String.format("typed password %s", password));
+        log.info(String.format("confirmed password %s", password));
         return this;
     }
 
@@ -102,9 +103,40 @@ public class RegisterPage extends BasePageObject {
         return new ProfilePage();
     }
 
+    @Step("register new user")
+    public RegisterPage doInvalidRegistration(String email, String password, String confPassword, String promoCode) {
+        typeEmail(email);
+        typePassword(password);
+        confirmPassword(confPassword);
+        acceptTerms();
+        typePromoCode(promoCode);
+        clickSubmitButton();
+        log.info("invalid registration complete");
+        return new RegisterPage();
+    }
+
+    @Step("register new user")
+    public RegisterPage registerNewUserWithoutTerms(String email, String password, String confPassword, String promoCode) {
+        typeEmail(email);
+        typePassword(password);
+        confirmPassword(confPassword);
+        typePromoCode(promoCode);
+        clickSubmitButton();
+        log.info("invalid registration complete");
+        return new RegisterPage();
+    }
+
     @Step("choose signIn tab")
     public LogInPage clickSignInTab() {
         signInTab.click();
         return new LogInPage();
+    }
+
+    public String getAlertMessage() {
+        return alertMessage.getText();
+    }
+
+    public Button getSubmitButton() {
+        return submitButton;
     }
 }

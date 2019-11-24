@@ -1,6 +1,8 @@
 package common;
 
 import assertions.ExtendedAssertions;
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.WebDriverRunner;
 import reporting.LogInstance;
 import reporting.TestListener;
 import org.apache.log4j.Logger;
@@ -20,6 +22,8 @@ public class BaseTest {
 
     @BeforeEach
     public void setUp(TestInfo testInfo) {
+        Configuration.timeout = 12000;
+        Configuration.startMaximized = true;
         log = LogInstance.setContext(testInfo);
         assertions = new ExtendedAssertions();
         log.info(String.format("%s setUp", testInfo.getDisplayName()));

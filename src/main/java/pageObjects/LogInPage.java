@@ -1,6 +1,8 @@
 package pageObjects;
 
 import io.qameta.allure.Step;
+import pageObjects.common.BasePageObject;
+import pageObjects.common.Urls;
 import webElements.*;
 
 import static com.codeborne.selenide.Selectors.*;
@@ -20,7 +22,7 @@ public class LogInPage extends BasePageObject {
     private TextField singUpTabTitle = new TextField($("#link2").$(withText("Sign Up")));
     private TextField registerFormTitle = new TextField($(withText("Create the New Account")));
     private TextField logInFormTitle = new TextField($(withText("Sign In to your Account")));
-    private TextField alert = new TextField(byClassName("alert alert-danger"));
+    private TextField alertMessage = new TextField($("div.alert.alert-danger"));
     private InputField emailField = new InputField(byId("loginEmail"));
     private InputField passwordField = new InputField(byId("loginPassword"));
     private Checkbox rememberCheckbox = new Checkbox(byName("persistence"));
@@ -30,7 +32,7 @@ public class LogInPage extends BasePageObject {
 
 
     public LogInPage() {
-        super("https://menuegg-stage.web.app/auth/login");
+        super(Urls.LOGIN_PAGE.getUrl());
     }
 
     @Step("type email")
@@ -64,9 +66,25 @@ public class LogInPage extends BasePageObject {
         return new ProfilePage();
     }
 
+    @Step("logIn as restaurant owner")
+    public LogInPage logInWithInvalidCredentials(String email, String password) {
+        typeEmail(email);
+        typePassword(password);
+        signInButton.click();
+        return new LogInPage();
+    }
+
     @Step("click forget password link")
     public LogInPage clickForgetPasswordLink() {
         forgetPasswordLink.click();
         return this;
+    }
+
+    public Button getSignInButton() {
+        return signInButton;
+    }
+
+    public String  getAlertMessage() {
+        return alertMessage.getText();
     }
 }

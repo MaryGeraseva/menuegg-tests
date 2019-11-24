@@ -55,4 +55,11 @@ public class ExtendedAssertions {
         }
         return true;
     }
+
+    @Step("check that we got expected alert message")
+    public void checkAlertMessage(String currentMessage, String expectedMessage) {
+        Assertions.assertTrue(currentMessage.contains(expectedMessage),
+                String.format("didn't got expected alert message, expected: %s, but got: %s", expectedMessage, currentMessage));
+        log.info(String.format("got expected alert message: %s", currentMessage));
+    }
 }

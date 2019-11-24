@@ -12,12 +12,12 @@ import pageObjects.ProfilePage;
 import pageObjects.RegisterPage;
 
 @DisplayName("O#1#A sign Up positive test")
-public class SignUpPositiveTest extends BaseTest {
+public class SignUpPosTests extends BaseTest {
 
     @ParameterizedTest(name = "Sign Up positive test #{0}")
-    @MethodSource("DataProvider#signUpPositiveTest")
+    @MethodSource("testsData.DataProvider#signUpPositiveTest")
     @Step("sign up positive test started")
-    @Description("test checks registration as a restaurant owner with valid credentials and accept the terms")
+    @Description("test checks registration as a restaurant owner with valid credentials and accepting the terms")
     public void signUpPositiveTest(int testId, String email, String password, String promoCode) {
         MainPage mainPage = new MainPage();
         mainPage.open();

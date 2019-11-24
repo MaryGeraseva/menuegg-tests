@@ -17,7 +17,7 @@ import reporting.ReplaceCamelCase;
 //            "1, ' ', ' '",
 //            "2, ' ', ' '"
 //    })
-//    @MethodSource("DataProvider#signUpPositiveTest")
+//    @MethodSource("testsData.DataProvider#signUpPositiveTest")
 
 //    @Step("")
 //    @Description("")

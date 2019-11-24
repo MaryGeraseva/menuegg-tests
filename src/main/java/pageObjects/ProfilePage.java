@@ -1,8 +1,11 @@
 package pageObjects;
 
+import pageObjects.common.BasePageObject;
+import pageObjects.common.Urls;
+
 public class ProfilePage extends BasePageObject {
 
     public ProfilePage() {
-        super("https://menuegg-stage.web.app/profile/restaurant-info");
+        super(Urls.PROFILE_PAGE.getUrl());
     }
 }
